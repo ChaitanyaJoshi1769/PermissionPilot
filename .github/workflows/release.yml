@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  create-release:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode version
+        run: sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+
+      - name: Build Release
+        run: ./Scripts/build.sh release
+
+      - name: Create DMG
+        run: |
+          mkdir -p build/DMG
+          cp -r build/Export/PermissionPilot.app build/DMG/
+          hdiutil create -volname "PermissionPilot" \
+                        -srcfolder build/DMG \
+                        -ov -format UDZO \
+                        build/PermissionPilot.dmg
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/PermissionPilot.dmg
+          body_path: CHANGELOG.md
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: PermissionPilot-release
+          path: build/PermissionPilot.dmg

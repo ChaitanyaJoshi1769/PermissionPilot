@@ -1,5 +1,49 @@
 # PermissionPilot Security Review
 
+## 🔒 Responsible Disclosure Policy
+
+We take security seriously. If you discover a vulnerability, **please report it responsibly**:
+
+### How to Report
+- **Email**: security@permissionpilot.app
+- **PGP Key**: Available upon request (mention in email)
+- **Do NOT**: Open a public GitHub issue for security vulnerabilities
+
+### Disclosure Timeline
+- **Day 1**: Report received, acknowledge within 24 hours
+- **Day 3–7**: Patch development begins
+- **Day 14–30**: Fix released (30-day target for critical issues)
+- **Day 90**: Public disclosure (90-day embargo minimum)
+
+### What Happens After
+1. We'll confirm receipt and provide a tracking reference
+2. You'll be credited in release notes (unless you request anonymity)
+3. A security advisory will be published on GitHub
+4. All users will be notified via in-app alert
+
+### Scope
+We appreciate reports on:
+- ✅ Code injection/RCE vulnerabilities
+- ✅ Privilege escalation paths
+- ✅ Data leakage/privacy violations
+- ✅ Authentication/authorization bypass
+- ✅ Cryptography weaknesses
+
+Out of scope:
+- ❌ Social engineering / phishing
+- ❌ Physical security
+- ❌ Denial of service (too many dialogs)
+- ❌ Minor UI/UX issues
+- ❌ "Security through obscurity" (open source by design)
+
+### Bug Bounty
+We don't currently offer monetary bounties, but critical security reporters will be:
+- Recognized publicly (if desired)
+- Listed as "Security Researcher" in documentation
+- Offered priority feature/bugfix collaboration
+
+---
+
 ## Executive Summary
 
 PermissionPilot is a user-level accessibility automation tool designed with **defense-in-depth** principles. It does NOT bypass macOS security mechanisms and operates entirely within user privilege boundaries.

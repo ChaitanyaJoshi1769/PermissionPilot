@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- CRITICAL: Must match your bundle identifier -->
+	<key>Label</key>
+	<string>com.permissionpilot.daemon</string>
+
+	<!-- Path to the daemon executable -->
+	<key>Program</key>
+	<string>/Applications/PermissionPilot.app/Contents/MacOS/PermissionPilotDaemon</string>
+
+	<!-- Start on login -->
+	<key>RunAtLoad</key>
+	<true/>
+
+	<!-- Keep alive - restart if crashed -->
+	<key>KeepAlive</key>
+	<dict>
+		<key>SuccessfulExit</key>
+		<true/>
+	</dict>
+
+	<!-- Reasonable logging -->
+	<key>StandardErrorPath</key>
+	<string>/tmp/permissionpilot-daemon-error.log</string>
+
+	<key>StandardOutPath</key>
+	<string>/tmp/permissionpilot-daemon.log</string>
+
+	<!-- Don't start immediately, wait for login -->
+	<key>LaunchOnlyOnce</key>
+	<false/>
+
+	<!-- Graceful shutdown timeout -->
+	<key>ExitTimeOut</key>
+	<integer>30</integer>
+
+	<!-- Run at standard user level (NOT elevated) -->
+	<!-- CRITICAL: Do NOT use <key>UserName</key> for root or admin privilege -->
+
+	<!-- Process should be watchful -->
+	<key>ProcessType</key>
+	<string>Background</string>
+
+	<!-- Set nice level for minimal CPU usage -->
+	<key>Nice</key>
+	<integer>10</integer>
+
+	<!-- Limit memory if needed -->
+	<!-- <key>ResourceLimits</key>
+	<dict>
+		<key>MemoryLimit</key>
+		<integer>209715200</integer>
+	</dict> -->
+</dict>
+</plist>

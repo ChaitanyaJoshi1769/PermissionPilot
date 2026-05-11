@@ -4,6 +4,8 @@
 
 PermissionPilot is a production-ready utility that intelligently detects and safely automates permission dialogs across macOS applications, browsers, installers, and developer tools.
 
+🌐 **[Visit Website](https://chaitanyajoshi1769.github.io/PermissionPilot)** | 📚 **[Documentation](#documentation)** | 💬 **[Discussions](https://github.com/ChaitanyaJoshi1769/PermissionPilot/discussions)**
+
 ## Features
 
 ✨ **Smart Dialog Detection**

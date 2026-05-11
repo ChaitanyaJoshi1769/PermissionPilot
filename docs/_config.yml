@@ -1,0 +1,35 @@
+# Jekyll configuration for GitHub Pages
+title: PermissionPilot
+description: Intelligent macOS permission dialog automation
+url: https://chaitanyajoshi1769.github.io/PermissionPilot
+baseurl: /PermissionPilot
+
+# Theme
+remote_theme: pages-themes/slate@v0.2.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# Markdown
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+
+# GitHub Pages settings
+github:
+  repository_url: https://github.com/ChaitanyaJoshi1769/PermissionPilot

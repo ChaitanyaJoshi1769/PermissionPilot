@@ -1,0 +1,140 @@
+{
+  "policies": [
+    {
+      "name": "Block Dangerous Operations",
+      "description": "Never auto-click buttons that could be destructive",
+      "patterns": [
+        {
+          "keyword": "delete",
+          "action": "BLOCK",
+          "reason": "Destructive operation"
+        },
+        {
+          "keyword": "erase",
+          "action": "BLOCK",
+          "reason": "Destructive operation"
+        },
+        {
+          "keyword": "reset",
+          "action": "BLOCK",
+          "reason": "Destructive operation"
+        },
+        {
+          "keyword": "format",
+          "action": "BLOCK",
+          "reason": "Destructive operation"
+        },
+        {
+          "keyword": "uninstall",
+          "action": "BLOCK",
+          "reason": "Uninstallation requires confirmation"
+        }
+      ],
+      "enabled": true,
+      "priority": 100
+    },
+    {
+      "name": "Allow Safe Permissions",
+      "description": "Auto-click safe permission dialogs for trusted apps",
+      "patterns": [
+        {
+          "keyword": "notification",
+          "action": "ALLOW",
+          "reason": "Notifications are generally safe"
+        },
+        {
+          "keyword": "allow once",
+          "action": "ALLOW",
+          "reason": "Allow Once is the safest option"
+        }
+      ],
+      "enabled": true,
+      "priority": 50
+    },
+    {
+      "name": "Trusted Apps Auto-Approve",
+      "description": "Auto-approve all dialogs from these trusted applications",
+      "apps": [
+        "com.apple.finder",
+        "com.apple.mail",
+        "com.google.Chrome",
+        "com.slack",
+        "com.zoom.xos"
+      ],
+      "action": "ALLOW",
+      "enabled": true,
+      "priority": 75
+    },
+    {
+      "name": "Block Unknown Apps",
+      "description": "Always ask before approving dialogs from unknown apps",
+      "trustThreshold": 0.5,
+      "action": "ASK",
+      "enabled": true,
+      "priority": 25
+    },
+    {
+      "name": "Security-Related Dialogs",
+      "description": "Require user confirmation for security-related prompts",
+      "patterns": [
+        {
+          "keyword": "disable security",
+          "action": "BLOCK"
+        },
+        {
+          "keyword": "admin password",
+          "action": "BLOCK"
+        },
+        {
+          "keyword": "accessibility",
+          "action": "ASK"
+        }
+      ],
+      "enabled": true,
+      "priority": 90
+    }
+  ],
+  "whitelist": [
+    {
+      "bundleID": "com.apple.finder",
+      "name": "Finder",
+      "reason": "System app"
+    },
+    {
+      "bundleID": "com.apple.mail",
+      "name": "Mail",
+      "reason": "System app"
+    },
+    {
+      "bundleID": "com.google.Chrome",
+      "name": "Google Chrome",
+      "reason": "Trusted browser"
+    },
+    {
+      "bundleID": "com.slack",
+      "name": "Slack",
+      "reason": "Trusted communication app"
+    },
+    {
+      "bundleID": "com.zoom.xos",
+      "name": "Zoom",
+      "reason": "Trusted video conferencing"
+    }
+  ],
+  "blacklist": [
+    {
+      "bundleID": "com.example.malware",
+      "name": "Suspicious App",
+      "reason": "Known malware"
+    }
+  ],
+  "settings": {
+    "confidenceThreshold": 0.85,
+    "trustScoreThreshold": 0.6,
+    "maxRetries": 3,
+    "clickTimeoutSeconds": 30,
+    "enableOCR": true,
+    "enableScreenshots": false,
+    "logRetentionDays": 90
+  }
+}

@@ -1,0 +1,65 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode version
+        run: sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+
+      - name: Build Debug
+        run: |
+          ./Scripts/build.sh debug
+
+      - name: Run Tests
+        run: |
+          xcodebuild test \
+            -scheme PermissionPilot \
+            -destination 'platform=macOS'
+
+      - name: Build Release
+        run: |
+          ./Scripts/build.sh release
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: PermissionPilot-build
+          path: build/PermissionPilot.xcarchive
+
+  lint:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
+      - name: Run SwiftLint
+        run: |
+          swiftlint lint Sources/ --reporter github-actions-logging
+        continue-on-error: true
+
+  code-quality:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check Code Coverage
+        run: |
+          xcodebuild test \
+            -scheme PermissionPilot \
+            -enableCodeCoverage YES \
+            -destination 'platform=macOS'
+        continue-on-error: true

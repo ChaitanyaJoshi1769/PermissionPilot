@@ -1,0 +1,20 @@
+# <type>: <subject>
+#
+# <body>
+#
+# <footer>
+
+# Types: feat, fix, docs, style, refactor, perf, test, chore, ci
+# Subject should be imperative and under 50 characters
+# Body should explain WHY not WHAT (code shows what)
+# Footer: Closes/Fixes #issue_number or Co-Authored-By:
+#
+# Example:
+#   feat: Add OCR fallback for dialog detection
+#
+#   Implement Vision Framework integration for dialogs that don't expose
+#   accessibility APIs. This provides fallback detection for proprietary
+#   apps and sandboxed applications.
+#
+#   Closes #123
+#   Co-Authored-By: Name <email@example.com>

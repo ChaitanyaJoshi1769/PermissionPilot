@@ -1,0 +1,113 @@
+{
+  "name": "Enterprise Secure Policy Set",
+  "version": "1.0.0",
+  "description": "Restrictive security-focused policy set for enterprise environments. Requires high confidence scores and blocks suspicious operations.",
+  "policies": [
+    {
+      "id": "allow-apple-only",
+      "name": "Allow Apple-Signed Applications Only",
+      "type": "rule",
+      "target_type": "app_signature",
+      "target_pattern": "Apple Inc",
+      "action": "allow",
+      "priority": 100,
+      "enabled": true,
+      "notes": "Only Apple-signed applications can automatically approve dialogs"
+    },
+    {
+      "id": "allow-notarized",
+      "name": "Allow Notarized Applications",
+      "type": "rule",
+      "target_type": "notarization_status",
+      "target_pattern": "notarized",
+      "action": "allow",
+      "priority": 95,
+      "enabled": true,
+      "confidence_required": 0.95,
+      "notes": "Only allow notarized applications with very high confidence"
+    },
+    {
+      "id": "whitelist-approved-vendors",
+      "name": "Whitelist Approved Vendors",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "com.google.Chrome",
+        "com.apple.Safari",
+        "com.mozilla.firefox",
+        "com.slack",
+        "com.zoom.xos"
+      ],
+      "action": "allow",
+      "priority": 90,
+      "enabled": true,
+      "notes": "Pre-approved applications list for enterprise"
+    },
+    {
+      "id": "block-unverified",
+      "name": "Block Unverified Applications",
+      "type": "rule",
+      "target_type": "signature_status",
+      "target_pattern": "(?i)(unsigned|unverified|unknown)",
+      "action": "block",
+      "priority": 20,
+      "enabled": true,
+      "notes": "Block applications without valid signatures"
+    },
+    {
+      "id": "block-dangerous",
+      "name": "Block Dangerous Operations",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(delete|erase|remove|uninstall|reset|reformat|destroy|bypass|disable)",
+      "action": "block",
+      "priority": 15,
+      "enabled": true,
+      "notes": "Always block potentially dangerous operations"
+    },
+    {
+      "id": "block-privilege-escalation",
+      "name": "Block Privilege Escalation",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(sudo|admin|root|superuser|elevated|privilege)",
+      "action": "block",
+      "priority": 25,
+      "enabled": true,
+      "notes": "Block any privilege escalation attempts"
+    },
+    {
+      "id": "block-system-changes",
+      "name": "Block System Configuration Changes",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(system preference|security setting|firewall|gatekeeper|sip|csrutil)",
+      "action": "block",
+      "priority": 22,
+      "enabled": true,
+      "notes": "Block changes to critical system settings"
+    },
+    {
+      "id": "allow-vendor-updates",
+      "name": "Allow Vendor Updates",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(update|upgrade|patch).*(?:google|apple|slack|zoom|microsoft)",
+      "action": "allow",
+      "priority": 85,
+      "enabled": true,
+      "confidence_required": 0.9,
+      "notes": "Allow updates from approved vendors with high confidence"
+    }
+  ],
+  "settings": {
+    "default_action": "block",
+    "trust_threshold": 0.85,
+    "require_notarization": true,
+    "require_apple_signature": false,
+    "ask_timeout_seconds": 60,
+    "log_level": "info",
+    "alert_on_suspicious": true,
+    "audit_enabled": true
+  }
+}

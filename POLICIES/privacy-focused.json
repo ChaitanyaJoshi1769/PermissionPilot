@@ -1,0 +1,59 @@
+{
+  "name": "Privacy Focused Policy Set",
+  "version": "1.0.0",
+  "description": "Privacy-maximized policy set with minimal logging and data collection. For users prioritizing privacy over automation.",
+  "policies": [
+    {
+      "id": "allow-apple-only",
+      "name": "Allow Apple Applications",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "com.apple.finder",
+        "com.apple.finder.FinderExtension",
+        "com.apple.Safari",
+        "com.apple.Mail"
+      ],
+      "action": "allow",
+      "priority": 100,
+      "enabled": true,
+      "notes": "Only Apple's own applications"
+    },
+    {
+      "id": "block-dialogs-default",
+      "name": "Block Unknown Dialogs by Default",
+      "type": "rule",
+      "target_type": "app_signature",
+      "target_pattern": "(?!^com\\.apple)",
+      "action": "block",
+      "priority": 10,
+      "enabled": true,
+      "notes": "Default to blocking for privacy"
+    },
+    {
+      "id": "allow-on-user-approval",
+      "name": "Allow Only When User Explicitly Approves",
+      "type": "rule",
+      "target_type": "confidence_score",
+      "target_pattern": "manual",
+      "action": "allow",
+      "priority": 99,
+      "enabled": true,
+      "notes": "Only allow dialogs approved by user action"
+    }
+  ],
+  "settings": {
+    "default_action": "block",
+    "trust_threshold": 0.99,
+    "ask_timeout_seconds": 60,
+    "log_level": "warn",
+    "audit_enabled": false,
+    "logging_enabled": false,
+    "screenshot_capture": false,
+    "database_enabled": false,
+    "require_manual_approval": true,
+    "privacy_mode": true,
+    "no_telemetry": true,
+    "no_external_api_calls": true
+  }
+}

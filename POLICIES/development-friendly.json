@@ -1,0 +1,102 @@
+{
+  "name": "Development Friendly Policy Set",
+  "version": "1.0.0",
+  "description": "Permissive policy set for development environments. Automatically approves dialogs from development tools and trusted build systems.",
+  "policies": [
+    {
+      "id": "allow-xcode",
+      "name": "Allow Xcode",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "com.apple.dt.Xcode",
+        "com.apple.dt.XCDEDebugger"
+      ],
+      "action": "allow",
+      "priority": 100,
+      "enabled": true,
+      "notes": "Xcode and debugger can automatically approve dialogs"
+    },
+    {
+      "id": "allow-brew",
+      "name": "Allow Homebrew",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "homebrew"
+      ],
+      "action": "allow",
+      "priority": 90,
+      "enabled": true,
+      "notes": "Homebrew package manager operations"
+    },
+    {
+      "id": "allow-terminal-apps",
+      "name": "Allow Terminal-based Tools",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(npm|pod|cargo|pip|ruby|python|node)",
+      "action": "allow",
+      "priority": 80,
+      "enabled": true,
+      "notes": "Common development tools and package managers"
+    },
+    {
+      "id": "allow-git",
+      "name": "Allow Git Operations",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "com.apple.Terminal",
+        "com.github.atom",
+        "com.microsoft.VSCode"
+      ],
+      "action": "allow",
+      "priority": 85,
+      "enabled": true,
+      "notes": "Git operations from common development environments"
+    },
+    {
+      "id": "allow-docker",
+      "name": "Allow Docker Desktop",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "com.docker.docker"
+      ],
+      "action": "allow",
+      "priority": 85,
+      "enabled": true,
+      "notes": "Docker Desktop and containerization operations"
+    },
+    {
+      "id": "allow-installation",
+      "name": "Allow Software Installation",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(install|update|download|setup)",
+      "action": "allow",
+      "priority": 70,
+      "enabled": true,
+      "confidence_required": 0.7,
+      "notes": "Allow installation dialogs with moderate confidence"
+    },
+    {
+      "id": "block-dangerous",
+      "name": "Block Dangerous Operations",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(delete|erase|remove|uninstall|reset|reformat|destroy)",
+      "action": "block",
+      "priority": 10,
+      "enabled": true,
+      "notes": "Always block potentially destructive operations"
+    }
+  ],
+  "settings": {
+    "default_action": "ask",
+    "trust_threshold": 0.6,
+    "ask_timeout_seconds": 30,
+    "log_level": "debug"
+  }
+}

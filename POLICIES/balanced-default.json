@@ -1,0 +1,142 @@
+{
+  "name": "Balanced Default Policy Set",
+  "version": "1.0.0",
+  "description": "Balanced policy set for typical users. Allows known/trusted applications while requiring user confirmation for unknown dialogs.",
+  "policies": [
+    {
+      "id": "allow-apple-system",
+      "name": "Allow Apple System Applications",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "com.apple.finder",
+        "com.apple.SystemPreferences",
+        "com.apple.LaunchServices",
+        "com.apple.systemuiserver",
+        "com.apple.Spotlight",
+        "com.apple.universalaccess"
+      ],
+      "action": "allow",
+      "priority": 100,
+      "enabled": true,
+      "notes": "Core Apple system applications"
+    },
+    {
+      "id": "allow-common-browsers",
+      "name": "Allow Common Browsers",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "com.google.Chrome",
+        "com.apple.Safari",
+        "com.mozilla.firefox"
+      ],
+      "action": "allow",
+      "priority": 90,
+      "enabled": true,
+      "confidence_required": 0.75,
+      "notes": "Popular web browsers with moderate confidence"
+    },
+    {
+      "id": "allow-communication",
+      "name": "Allow Communication Apps",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "com.slack",
+        "com.zoom.xos",
+        "com.skype.skype",
+        "com.apple.mail",
+        "com.apple.iChat"
+      ],
+      "action": "allow",
+      "priority": 85,
+      "enabled": true,
+      "confidence_required": 0.8,
+      "notes": "Popular communication and collaboration tools"
+    },
+    {
+      "id": "allow-productivity",
+      "name": "Allow Productivity Applications",
+      "type": "whitelist",
+      "target_type": "app",
+      "target_values": [
+        "com.microsoft.Word",
+        "com.microsoft.Excel",
+        "com.microsoft.PowerPoint",
+        "com.google.sheets",
+        "com.google.docs"
+      ],
+      "action": "allow",
+      "priority": 80,
+      "enabled": true,
+      "confidence_required": 0.8,
+      "notes": "Popular office and productivity tools"
+    },
+    {
+      "id": "allow-notarized-high-confidence",
+      "name": "Allow Notarized Apps with High Confidence",
+      "type": "rule",
+      "target_type": "notarization_status",
+      "target_pattern": "notarized",
+      "action": "allow",
+      "priority": 75,
+      "enabled": true,
+      "confidence_required": 0.85,
+      "notes": "Auto-approve notarized applications with high confidence scores"
+    },
+    {
+      "id": "ask-unknown-apps",
+      "name": "Ask User for Unknown Applications",
+      "type": "rule",
+      "target_type": "signature_status",
+      "target_pattern": "(?i)(unsigned|unverified)",
+      "action": "ask",
+      "priority": 50,
+      "enabled": true,
+      "notes": "Prompt user for unsigned or unverified applications"
+    },
+    {
+      "id": "block-dangerous",
+      "name": "Block Dangerous Operations",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(delete|erase|remove.*system|uninstall.*critical|reset.*system|format.*disk|reformat.*drive)",
+      "action": "block",
+      "priority": 10,
+      "enabled": true,
+      "notes": "Block operations that could cause data loss"
+    },
+    {
+      "id": "block-privilege-escalation",
+      "name": "Block Privilege Escalation",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(sudo password|admin password|root access|requires administrator)",
+      "action": "block",
+      "priority": 12,
+      "enabled": true,
+      "notes": "Block attempts to request admin/root passwords"
+    },
+    {
+      "id": "allow-safe-installation",
+      "name": "Allow Safe Software Installation",
+      "type": "rule",
+      "target_type": "dialog_text",
+      "target_pattern": "(?i)(install.*software|download|setup|update|upgrade)(?!.*dangerous)(?!.*erase)(?!.*delete)",
+      "action": "allow",
+      "priority": 70,
+      "enabled": true,
+      "confidence_required": 0.75,
+      "notes": "Allow installation dialogs from trusted sources"
+    }
+  ],
+  "settings": {
+    "default_action": "ask",
+    "trust_threshold": 0.70,
+    "ask_timeout_seconds": 30,
+    "log_level": "info",
+    "audit_enabled": true,
+    "screenshot_on_ask": true
+  }
+}

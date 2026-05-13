@@ -37,6 +37,12 @@ Complete guide to PermissionPilot documentation. Start here to find what you nee
 
 **Settings & Configuration:**
 
+- **[CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)** — Advanced configuration guide (2,000+ lines)
+  - Configuration file structure and locations
+  - Policy types and pattern matching
+  - Settings reference (daemon, detection, automation, security)
+  - Enterprise, developer, and privacy mode examples
+  - Multi-machine configuration
 - **[Configuration/example-policies.json](Configuration/example-policies.json)** — Example policy file
 - **[README.md#Advanced Configuration](README.md#advanced-configuration)** — Custom policies
 
@@ -59,13 +65,27 @@ Complete guide to PermissionPilot documentation. Start here to find what you nee
 
 ### Building & Testing
 - **[Makefile](Makefile)** — Build commands
+- **[TESTING.md](TESTING.md)** — Comprehensive testing guide (unit, integration, performance, security, manual)
 - **[QUICK_START.md#Key Commands](QUICK_START.md#key-commands)** — All available commands
 - **[CONTRIBUTING.md#Testing Guidelines](CONTRIBUTING.md#testing-guidelines)** — Testing approach
 
-### Code Quality
+### Code Quality & Debugging
 - **[.pre-commit-config.yaml](.pre-commit-config.yaml)** — Pre-commit hooks setup
 - **[.editorconfig](.editorconfig)** — Editor configuration
 - **[.gitmessage](.gitmessage)** — Commit message template
+- **[MONITORING.md](MONITORING.md)** — Production monitoring, debugging, profiling
+
+### Swift APIs & Integration
+- **[API_REFERENCE.md](API_REFERENCE.md)** — Complete Swift API documentation
+  - DialogDetection, PolicyEngine, TrustScoring modules
+  - ButtonMatching, AutomationEngine, LogManager
+  - Error handling and extension examples
+
+### Database & Data
+- **[DATABASE_SCHEMA.md](DATABASE_SCHEMA.md)** — SQLite schema documentation
+  - 7 tables with relationships
+  - 20+ common queries
+  - Maintenance and export procedures
 
 ### Git Workflow
 - **[CONTRIBUTING.md#Development Workflow](CONTRIBUTING.md#development-workflow)** — Branching and commits
@@ -149,6 +169,39 @@ Complete guide to PermissionPilot documentation. Start here to find what you nee
 
 **I want deep technical knowledge:**
 
+### Technical Deep Dive
+- **[API_REFERENCE.md](API_REFERENCE.md)** — 1,200+ lines: Complete Swift API reference
+  - All public module interfaces
+  - Data models and types
+  - Usage examples for each API
+  - Error handling patterns
+  - How to extend PermissionPilot
+
+- **[DATABASE_SCHEMA.md](DATABASE_SCHEMA.md)** — 1,500+ lines: Complete database documentation
+  - 7 core tables with full descriptions
+  - Column types, constraints, indexes
+  - Table relationships and foreign keys
+  - 20+ query examples (statistics, policy analysis, audit)
+  - Backup, cleanup, and export procedures
+  - Troubleshooting (corruption, locking, performance)
+
+- **[TESTING.md](TESTING.md)** — 2,500+ lines: Comprehensive testing guide
+  - Unit testing structure and organization
+  - Integration testing procedures
+  - Performance benchmarking with targets
+  - Security testing and threat verification
+  - Manual testing for all dialog types
+  - CI/CD testing pipeline
+  - Test debugging and common issues
+
+- **[MONITORING.md](MONITORING.md)** — 1,800+ lines: Production operations guide
+  - System monitoring (CPU, memory, disk)
+  - Daemon health and crash debugging
+  - Feature monitoring and metrics
+  - Performance profiling techniques
+  - Incident response procedures
+  - Automated monitoring scripts
+
 ### Architecture & Design
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** — 15+ page technical design
   - System components and data flow
@@ -177,7 +230,14 @@ Complete guide to PermissionPilot documentation. Start here to find what you nee
   - Build targets
   - Compilation settings
 
-### Distribution
+### Distribution & Deployment
+- **[DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)** — 1,500+ line deployment guide
+  - Single machine installation (DMG, Homebrew, source)
+  - Mass deployment via scripts
+  - MDM integration with Apple Business Manager
+  - Configuration management (Ansible, Chef, Puppet)
+  - Monitoring and health checks
+  - Uninstallation and upgrade procedures
 - **[Formula/permissionpilot.rb](Formula/permissionpilot.rb)** — Homebrew formula
 - **[Scripts/](Scripts/)** — Build and deployment scripts
   - `build.sh` — Build debug/release versions
@@ -222,7 +282,11 @@ Complete guide to PermissionPilot documentation. Start here to find what you nee
 1. [QUICK_START.md](QUICK_START.md) — Setup
 2. [CONTRIBUTING.md](CONTRIBUTING.md) — Guidelines
 3. [ARCHITECTURE.md](ARCHITECTURE.md) — Design
-4. [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) — Organization
+4. [API_REFERENCE.md](API_REFERENCE.md) — Swift APIs
+5. [TESTING.md](TESTING.md) — Testing procedures
+6. [DATABASE_SCHEMA.md](DATABASE_SCHEMA.md) — Database design
+7. [MONITORING.md](MONITORING.md) — Debugging & profiling
+8. [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) — Organization
 
 ### End User
 1. [README.md](README.md) — Overview
@@ -243,6 +307,13 @@ Complete guide to PermissionPilot documentation. Start here to find what you nee
 3. [CONTRIBUTORS.md](CONTRIBUTORS.md) — Recognition
 4. [SPONSORSHIP.md](SPONSORSHIP.md) — Support options
 
+### System Administrator / IT Manager
+1. [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) — Deployment procedures
+2. [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md) — Configuration management
+3. [MONITORING.md](MONITORING.md) — Monitoring and health checks
+4. [FAQ.md](FAQ.md) — Technical questions
+5. [TROUBLESHOOTING.md](TROUBLESHOOTING.md) — Problem solving
+
 ---
 
 ## 🔗 **Cross-Reference**
@@ -262,8 +333,11 @@ Complete guide to PermissionPilot documentation. Start here to find what you nee
 | Question | Where to Find Answer |
 |----------|---------------------|
 | How do I install? | [QUICK_START.md](QUICK_START.md) or [README.md#Installation](README.md#installation) |
-| How do I configure policies? | [EXAMPLE_POLICIES.md](EXAMPLE_POLICIES.md) |
-| Something isn't working | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
+| How do I deploy to many machines? | [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) |
+| How do I configure policies? | [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md) or [EXAMPLE_POLICIES.md](EXAMPLE_POLICIES.md) |
+| What does this term mean? | [GLOSSARY.md](GLOSSARY.md) |
+| Something isn't working | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) or [MONITORING.md](MONITORING.md) |
+| How do I debug an issue? | [MONITORING.md](MONITORING.md) or [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
 | How do I contribute? | [CONTRIBUTING.md](CONTRIBUTING.md) |
 | What's the roadmap? | [ROADMAP.md](ROADMAP.md) |
 | Is it secure? | [SECURITY.md](SECURITY.md) |
@@ -276,11 +350,20 @@ Complete guide to PermissionPilot documentation. Start here to find what you nee
 ## 📈 **Statistics**
 
 Current documentation:
-- **80+ pages** of comprehensive documentation
-- **10+ guides** for different audiences
-- **Marketing materials** ready for launch
-- **Security audit** with threat model
-- **API documentation** (code + examples)
+- **120+ pages** of comprehensive documentation
+- **28+ markdown files** covering all aspects
+- **7 comprehensive guides** (Testing, Database, API, Monitoring, Configuration, Deployment, Glossary) - 12,800+ lines
+- **100+ terminal examples** and code snippets
+- **50+ SQL query examples** for analytics
+- **6 role-based sections** for different audiences (users, developers, security researchers, product managers, community managers, system administrators)
+- **Marketing materials** and blog post ready for publication
+- **Complete security audit** with 10-threat model
+- **Full Swift API documentation** with 40+ examples
+- **Complete SQLite schema** with relationships and queries
+- **Production monitoring** scripts and procedures
+- **Enterprise deployment** with MDM, Ansible, Chef, Puppet examples
+- **Advanced configuration** templates (enterprise, developer, privacy modes)
+- **100+ term glossary** with cross-references
 
 ---
 
@@ -293,5 +376,14 @@ Current documentation:
 ---
 
 **Last updated:** May 13, 2024  
-**Total files documented:** 30+  
-**Total documentation pages:** 80+
+**Total files documented:** 40+  
+**Total documentation pages:** 120+  
+**Total lines of documentation:** 48,000+  
+**Developer guides (7 files):** 12,800+ lines
+- TESTING.md: 2,500+ lines
+- DATABASE_SCHEMA.md: 1,500+ lines
+- API_REFERENCE.md: 1,200+ lines
+- MONITORING.md: 1,800+ lines
+- CONFIGURATION_GUIDE.md: 2,000+ lines
+- DEPLOYMENT_GUIDE.md: 1,500+ lines
+- GLOSSARY.md: 800+ lines

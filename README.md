@@ -1,10 +1,23 @@
 # PermissionPilot
 
-> Intelligent macOS permission dialog automation for power users.
+<div align="center">
 
-PermissionPilot is a production-ready utility that intelligently detects and safely automates permission dialogs across macOS applications, browsers, installers, and developer tools.
+[![GitHub Release](https://img.shields.io/github/v/release/ChaitanyaJoshi1769/PermissionPilot?style=flat-square&label=Release)](https://github.com/ChaitanyaJoshi1769/PermissionPilot/releases)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/ChaitanyaJoshi1769/PermissionPilot?style=flat-square)](https://github.com/ChaitanyaJoshi1769/PermissionPilot/stargazers)
+[![Swift](https://img.shields.io/badge/Swift-5.9+-orange?style=flat-square)](https://swift.org)
+[![macOS](https://img.shields.io/badge/macOS-13.0+-blue?style=flat-square)](https://www.apple.com/macos)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/ChaitanyaJoshi1769/PermissionPilot/build.yml?style=flat-square&branch=main)](https://github.com/ChaitanyaJoshi1769/PermissionPilot/actions/workflows/build.yml)
 
-🌐 **[Visit Website](https://chaitanyajoshi1769.github.io/PermissionPilot)** | 📚 **[Documentation](#documentation)** | 💬 **[Discussions](https://github.com/ChaitanyaJoshi1769/PermissionPilot/discussions)**
+**Intelligent macOS permission dialog automation for power users.**
+
+PermissionPilot intelligently detects and safely automates permission dialogs across macOS applications, browsers, installers, and developer tools.
+
+[🌐 Website](https://chaitanyajoshi1769.github.io/PermissionPilot) • [📚 Docs](#documentation) • [💬 Discussions](https://github.com/ChaitanyaJoshi1769/PermissionPilot/discussions) • [⭐ Star Us](https://github.com/ChaitanyaJoshi1769/PermissionPilot)
+
+</div>
+
+---
 
 ## Features
 

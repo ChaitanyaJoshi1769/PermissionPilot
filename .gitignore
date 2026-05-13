@@ -1,0 +1,96 @@
+# Xcode
+build/
+.build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcworkspace
+xcuserdata/
+*.xcarchive
+DerivedData/
+*.hmap
+*.ipa
+
+# Swift Package Manager
+.swiftpm/
+Package.resolved
+
+# CocoaPods (if used)
+Pods/
+Podfile.lock
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE
+.vscode/
+.idea/
+*.swiftformat
+*.swiftlint
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.dylib
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Temporary
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Distribution
+dist/
+*.dmg
+*.app
+
+# Test coverage
+coverage/
+.coverage
+*.lcov
+
+# Node (if frontend tools are added)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python (if scripts are added)
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+
+# Misc
+.cache/
+.venv
+*.egg-info/
+dist/
+build/

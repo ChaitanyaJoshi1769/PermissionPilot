@@ -1,0 +1,53 @@
+{
+  "description": "Power Saver Configuration - Optimized for battery life and minimal resource usage",
+  "daemon": {
+    "polling_interval_ms": 2000,
+    "max_queue_size": 500,
+    "idle_timeout_seconds": 600
+  },
+  "detection": {
+    "method": "accessibility_api",
+    "accessibility_api": {
+      "enabled": true,
+      "cache_results": true,
+      "cache_ttl_seconds": 60
+    },
+    "ocr": {
+      "enabled": false,
+      "quality": "low",
+      "timeout_ms": 1000
+    },
+    "confidence_threshold": 0.80
+  },
+  "automation": {
+    "enabled": true,
+    "click_delay_ms": 300,
+    "mouse_movement_speed": "slow",
+    "retry_failed_clicks": false,
+    "max_retries": 1
+  },
+  "trust": {
+    "notarization_check": false,
+    "cache_results": true,
+    "cache_ttl_hours": 48
+  },
+  "database": {
+    "enabled": true,
+    "path": "~/Library/Application Support/PermissionPilot/audit.db",
+    "wal_mode": false,
+    "cleanup_old_events_days": 14
+  },
+  "screenshots": {
+    "capture_enabled": false,
+    "cache_size_mb": 50
+  },
+  "logging": {
+    "level": "warn",
+    "file_rotation_mb": 10,
+    "max_files": 5
+  },
+  "ui": {
+    "enabled": false,
+    "theme": "auto"
+  }
+}

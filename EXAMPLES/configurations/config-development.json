@@ -1,0 +1,72 @@
+{
+  "description": "Development Configuration - For debugging and testing with verbose logging",
+  "daemon": {
+    "polling_interval_ms": 200,
+    "max_queue_size": 500,
+    "idle_timeout_seconds": 60
+  },
+  "detection": {
+    "method": "hybrid",
+    "accessibility_api": {
+      "enabled": true,
+      "cache_results": false,
+      "cache_ttl_seconds": 0,
+      "debug_output": true
+    },
+    "ocr": {
+      "enabled": true,
+      "quality": "high",
+      "timeout_ms": 2000,
+      "debug_output": true
+    },
+    "confidence_threshold": 0.5
+  },
+  "automation": {
+    "enabled": true,
+    "click_delay_ms": 100,
+    "mouse_movement_speed": "natural",
+    "retry_failed_clicks": true,
+    "max_retries": 5,
+    "debug_output": true
+  },
+  "trust": {
+    "notarization_check": false,
+    "cache_results": false,
+    "cache_ttl_hours": 0,
+    "debug_output": true
+  },
+  "database": {
+    "enabled": true,
+    "path": "~/Library/Application Support/PermissionPilot/audit.db",
+    "wal_mode": true,
+    "cleanup_old_events_days": 7,
+    "debug_output": true
+  },
+  "screenshots": {
+    "capture_enabled": true,
+    "capture_on_ask": true,
+    "capture_on_allow": true,
+    "capture_on_block": true,
+    "cache_size_mb": 500,
+    "save_raw_images": true
+  },
+  "logging": {
+    "level": "debug",
+    "file_rotation_mb": 50,
+    "max_files": 20,
+    "format": "json",
+    "include_stack_traces": true,
+    "console_output": true
+  },
+  "ui": {
+    "enabled": true,
+    "theme": "light",
+    "show_debug_info": true
+  },
+  "development": {
+    "enabled": true,
+    "simulate_dialogs": false,
+    "record_performance_metrics": true,
+    "enable_profiling": true
+  }
+}

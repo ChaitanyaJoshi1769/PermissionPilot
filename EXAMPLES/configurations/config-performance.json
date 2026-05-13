@@ -1,0 +1,53 @@
+{
+  "description": "High Performance Configuration - Optimized for speed and responsiveness",
+  "daemon": {
+    "polling_interval_ms": 100,
+    "max_queue_size": 1000,
+    "idle_timeout_seconds": 300
+  },
+  "detection": {
+    "method": "hybrid",
+    "accessibility_api": {
+      "enabled": true,
+      "cache_results": true,
+      "cache_ttl_seconds": 30
+    },
+    "ocr": {
+      "enabled": true,
+      "quality": "high",
+      "timeout_ms": 500
+    },
+    "confidence_threshold": 0.75
+  },
+  "automation": {
+    "enabled": true,
+    "click_delay_ms": 50,
+    "mouse_movement_speed": "fast",
+    "retry_failed_clicks": true,
+    "max_retries": 3
+  },
+  "trust": {
+    "notarization_check": true,
+    "cache_results": true,
+    "cache_ttl_hours": 24
+  },
+  "database": {
+    "enabled": true,
+    "path": "~/Library/Application Support/PermissionPilot/audit.db",
+    "wal_mode": true,
+    "cleanup_old_events_days": 30
+  },
+  "screenshots": {
+    "capture_enabled": false,
+    "cache_size_mb": 100
+  },
+  "logging": {
+    "level": "info",
+    "file_rotation_mb": 50,
+    "max_files": 10
+  },
+  "ui": {
+    "enabled": true,
+    "theme": "auto"
+  }
+}

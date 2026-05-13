@@ -1,0 +1,76 @@
+{
+  "description": "Security Audit Configuration - Optimized for compliance, logging, and security monitoring",
+  "daemon": {
+    "polling_interval_ms": 500,
+    "max_queue_size": 2000,
+    "idle_timeout_seconds": 180
+  },
+  "detection": {
+    "method": "hybrid",
+    "accessibility_api": {
+      "enabled": true,
+      "cache_results": false,
+      "cache_ttl_seconds": 0
+    },
+    "ocr": {
+      "enabled": true,
+      "quality": "highest",
+      "timeout_ms": 1000
+    },
+    "confidence_threshold": 0.85
+  },
+  "automation": {
+    "enabled": true,
+    "click_delay_ms": 200,
+    "mouse_movement_speed": "natural",
+    "retry_failed_clicks": true,
+    "max_retries": 5
+  },
+  "trust": {
+    "notarization_check": true,
+    "cache_results": false,
+    "cache_ttl_hours": 0
+  },
+  "database": {
+    "enabled": true,
+    "path": "~/Library/Application Support/PermissionPilot/audit.db",
+    "wal_mode": true,
+    "cleanup_old_events_days": 90,
+    "backup_enabled": true,
+    "backup_frequency_hours": 24
+  },
+  "screenshots": {
+    "capture_enabled": true,
+    "capture_on_ask": true,
+    "capture_on_allow": true,
+    "capture_on_block": true,
+    "cache_size_mb": 500
+  },
+  "logging": {
+    "level": "debug",
+    "file_rotation_mb": 100,
+    "max_files": 50,
+    "format": "json",
+    "include_stack_traces": true
+  },
+  "security": {
+    "require_notarization": true,
+    "block_dangerous_keywords": true,
+    "dangerous_keywords": [
+      "delete",
+      "erase",
+      "reset",
+      "reformat",
+      "destroy",
+      "sudo",
+      "admin",
+      "root"
+    ],
+    "verify_code_signature": true,
+    "enforce_policies": true
+  },
+  "ui": {
+    "enabled": true,
+    "theme": "light"
+  }
+}

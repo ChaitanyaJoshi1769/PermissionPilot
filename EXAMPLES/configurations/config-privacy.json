@@ -1,0 +1,58 @@
+{
+  "description": "Privacy Configuration - Minimal logging and data collection for privacy-conscious users",
+  "daemon": {
+    "polling_interval_ms": 1000,
+    "max_queue_size": 100,
+    "idle_timeout_seconds": 300
+  },
+  "detection": {
+    "method": "accessibility_api",
+    "accessibility_api": {
+      "enabled": true,
+      "cache_results": true,
+      "cache_ttl_seconds": 0
+    },
+    "ocr": {
+      "enabled": false
+    },
+    "confidence_threshold": 0.90
+  },
+  "automation": {
+    "enabled": true,
+    "click_delay_ms": 100,
+    "mouse_movement_speed": "natural",
+    "retry_failed_clicks": false,
+    "max_retries": 1
+  },
+  "trust": {
+    "notarization_check": true,
+    "cache_results": false,
+    "cache_ttl_hours": 0
+  },
+  "database": {
+    "enabled": false,
+    "logging_enabled": false
+  },
+  "screenshots": {
+    "capture_enabled": false
+  },
+  "logging": {
+    "enabled": false,
+    "level": "error"
+  },
+  "security": {
+    "require_notarization": true,
+    "block_dangerous_keywords": true
+  },
+  "privacy": {
+    "enabled": true,
+    "no_external_api_calls": true,
+    "no_telemetry": true,
+    "no_analytics": true,
+    "local_only": true,
+    "disable_cloud_sync": true
+  },
+  "ui": {
+    "enabled": false
+  }
+}
